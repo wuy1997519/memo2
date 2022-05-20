@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="memoViewModel"
+            type="com.example.memo.viewModel.MemoViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+            
+            <EditText
+                android:id="@+id/title"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:hint="제목"
+                android:singleLine="true"
+                android:text="@{memoViewModel.currentTitle}"
+                android:textColor="@color/black"
+                android:enabled="@{memoViewModel.currentEditEnabled}"/>
+            
+        </androidx.appcompat.widget.Toolbar>
+
+        <EditText
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"
+            android:background="@null"
+            android:gravity="left"
+            android:inputType="textMultiLine"
+            android:padding="10dp"
+            android:text="@{memoViewModel.currentContent}"
+            android:textColor="@color/black"
+            android:enabled="@{memoViewModel.currentEditEnabled}"/>
+
+    </RelativeLayout>
+</layout>
